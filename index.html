@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bar Ristorante Gabri — Cucina di mare a Cavi di Lavagna</title>
+<meta name="description" content="Bar, ristorante e gelateria in Via Como 10 a Cavi di Lavagna. Colazioni al banco, tavola calda, aperitivi vista mare, gelati artigianali e cena di pesce ligure. Aperto tutti i giorni 6:30–02:00. Cena su prenotazione: 328 24 64 286.">
+<meta name="theme-color" content="#F4EEE3">
+<meta property="og:type" content="restaurant">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Bar Ristorante Gabri — Cucina di mare a Cavi di Lavagna">
+<meta property="og:description" content="Bar, ristorante e gelateria a Cavi di Lavagna. Dalle 6:30 alle 2:00, ogni giorno. Cena di pesce su prenotazione.">
+<meta property="og:image" content="https://ristorantebargabri.it/images/terrace.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E1A27'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-style='italic' font-size='38' text-anchor='middle' fill='%23F4EEE3'%3EG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0;1,9..144,300..700,0&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4EEE3; --paper-2:#EBE2D3; --ink:#0E1A27; --ink-2:#2B3A4A;
+  --terra:#B24A32; --terra-soft:#D9694F;
+  --bg:var(--paper); --fg:var(--ink); --fg-2:var(--ink-2); --accent:var(--terra);
+  --line:rgba(14,26,39,.18); --line-strong:rgba(14,26,39,.5);
+  --gutter:clamp(20px,4vw,64px);
+  --ease:cubic-bezier(.16,1,.3,1);
+  --display:'Fraunces',Georgia,serif;
+  --sans:'Instrument Sans',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+html.theme-dark{
+  color-scheme:dark;
+  --bg:#0E1A27; --fg:#F4EEE3; --fg-2:rgba(244,238,227,.72); --accent:#E07A5F;
+  --line:rgba(244,238,227,.16); --line-strong:rgba(244,238,227,.5);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:clamp(16px,1.05vw,18px);line-height:1.55;overflow-x:clip;transition:background-color .8s var(--ease),color .8s var(--ease)}
+img{max-width:100%;display:block}
+figure{margin:0}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+h1,h2,h3{margin:0;font-family:var(--display);font-weight:400;line-height:.98;letter-spacing:-.02em;font-variation-settings:'opsz' 144,'SOFT' 0}
+em,.it{font-family:var(--display);font-style:italic;font-weight:300;letter-spacing:-.01em}
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.skip{position:absolute;left:-999px;top:12px;background:var(--fg);color:var(--bg);padding:10px 14px;z-index:1000;border-radius:999px}
+.skip:focus{left:12px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:2px}
+.wrap{padding-inline:var(--gutter)}
+section{position:relative}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:18px var(--gutter);mix-blend-mode:difference;color:#fff;pointer-events:none}
+.nav>*{pointer-events:auto}
+.brand{font-family:var(--display);font-style:italic;font-weight:300;font-size:1.6rem;line-height:1;letter-spacing:-.02em}
+.nav-links{display:flex;gap:28px;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+.nav-links a{position:relative;padding:4px 0}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-cta{display:flex;align-items:center;gap:18px;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+.nav-cta .pill{border:1px solid currentColor;padding:9px 16px;border-radius:999px}
+.burger{display:none;width:44px;height:44px;position:relative}
+.burger span{position:absolute;left:11px;width:22px;height:1.5px;background:currentColor;transition:transform .5s var(--ease),opacity .3s}
+.burger span:nth-child(1){top:17px}.burger span:nth-child(2){top:26px}
+.menu-open .burger span:nth-child(1){transform:translateY(4.5px) rotate(45deg)}
+.menu-open .burger span:nth-child(2){transform:translateY(-4.5px) rotate(-45deg)}
+.overlay{position:fixed;inset:0;z-index:55;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;justify-content:center;padding:var(--gutter);opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility 0s .5s}
+.menu-open .overlay{opacity:1;visibility:visible;transition:opacity .5s var(--ease)}
+.overlay a{font-family:var(--display);font-size:clamp(2.2rem,9vw,4rem);line-height:1.1;letter-spacing:-.02em;display:block;transform:translateY(20px);opacity:0;transition:transform .7s var(--ease),opacity .7s}
+.menu-open .overlay a{transform:none;opacity:1}
+.overlay .meta{margin-top:32px;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+
+/* ---------- Buttons ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;gap:12px;padding:15px 24px;border-radius:999px;border:1px solid var(--fg);font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;overflow:hidden;isolation:isolate;transition:color .5s var(--ease),border-color .5s var(--ease)}
+.btn::before{content:'';position:absolute;inset:0;background:var(--fg);transform:translateY(101%);transition:transform .55s var(--ease);z-index:-1}
+.btn:hover::before,.btn:focus-visible::before{transform:none}
+.btn:hover{color:var(--bg)}
+.btn svg{width:14px;height:14px;transition:transform .5s var(--ease)}
+.btn:hover svg{transform:translateX(5px)}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.solid::before{background:var(--fg)}
+.btn.solid:hover{border-color:var(--fg);color:var(--bg)}
+.btn[disabled]{opacity:.55;cursor:default}
+.btn[disabled]::before{display:none}
+.link{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line-strong);padding-bottom:3px;transition:border-color .4s}
+.link:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100svh;display:grid;grid-template-columns:1.15fr .85fr;gap:var(--gutter);align-items:end;padding:120px var(--gutter) 40px;isolation:isolate}
+.hero canvas{position:absolute;inset:auto 0 0 0;height:62%;width:100%;z-index:-1;pointer-events:none}
+.hero-copy{padding-bottom:20px}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2);display:flex;gap:14px;align-items:center;margin-bottom:28px}
+.eyebrow::before{content:'';width:32px;height:1px;background:var(--accent)}
+.hero h1{font-size:clamp(3.4rem,10.5vw,10rem);margin-bottom:28px}
+.hero h1 em{color:var(--accent)}
+.lead{max-width:34rem;font-size:clamp(1.05rem,1.4vw,1.3rem);color:var(--fg-2);margin:0 0 34px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-media{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:6px;max-height:70vh;justify-self:end;width:100%;max-width:520px}
+.hero-media img{width:100%;height:115%;object-fit:cover}
+.hero-media figcaption{position:absolute;left:14px;bottom:12px;color:#fff;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.hero-foot{grid-column:1/-1;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:18px;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2)}
+
+/* ---------- Section commons ---------- */
+.sec{padding:clamp(90px,12vw,170px) var(--gutter)}
+.sec-head{display:grid;grid-template-columns:1fr 2fr;gap:var(--gutter);align-items:end;margin-bottom:clamp(40px,6vw,80px)}
+.sec-head .mono{color:var(--fg-2)}
+.sec-head h2{font-size:clamp(2.4rem,6vw,5.6rem)}
+.sec-head h2 em{color:var(--accent)}
+.sec-head p{max-width:32rem;color:var(--fg-2);margin:18px 0 0}
+.rule{height:1px;background:var(--line)}
+
+/* ---------- Story (pinned) ---------- */
+.story{height:330vh}
+.story-stage{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:1fr 1fr;gap:var(--gutter);align-items:center;padding:0 var(--gutter)}
+.story-time{font-family:var(--display);font-size:clamp(5rem,17vw,15rem);line-height:.9;letter-spacing:-.04em;font-variation-settings:'opsz' 144,'SOFT' 0;color:var(--fg)}
+.story-time em{font-size:.35em;vertical-align:top;margin-left:.1em;color:var(--accent);letter-spacing:0}
+.story-lines{position:relative;min-height:12rem}
+.story-line{position:absolute;inset:0;max-width:30rem}
+.story-line h3{font-size:clamp(1.8rem,3.4vw,3rem);margin-bottom:16px}
+.story-line h3 em{color:var(--accent)}
+.story-line p{color:var(--fg-2);margin:0;font-size:1.05rem}
+.story-ui{position:absolute;left:var(--gutter);right:var(--gutter);bottom:34px;display:flex;align-items:center;gap:20px;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2)}
+.story-bar{flex:1;height:1px;background:var(--line);position:relative}
+.story-bar i{position:absolute;left:0;top:-1px;height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left}
+html.no-motion .story{height:auto}
+html.no-motion .story-stage{position:static;height:auto;display:block;padding:clamp(60px,8vw,120px) var(--gutter)}
+html.no-motion .story-time{display:none}
+html.no-motion .story-lines{min-height:0}
+html.no-motion .story-line{position:static;margin-bottom:48px}
+html.no-motion .story-ui{display:none}
+
+/* ---------- Cucina ---------- */
+.cucina-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:var(--gutter)}
+.cucina-media{position:sticky;top:12vh;aspect-ratio:3/4;overflow:hidden;border-radius:6px;max-height:76vh}
+.cucina-media img{width:100%;height:115%;object-fit:cover}
+.cucina-list{display:flex;flex-direction:column}
+.cucina-item{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:34px 0;border-top:1px solid var(--line)}
+.cucina-item:last-child{border-bottom:1px solid var(--line)}
+.cucina-item .n{font-family:var(--display);font-style:italic;font-weight:300;font-size:1.6rem;color:var(--accent);line-height:1}
+.cucina-item h3{font-size:clamp(1.5rem,2.4vw,2.2rem);margin-bottom:12px}
+.cucina-item p{margin:0;color:var(--fg-2);max-width:32rem}
+
+/* ---------- Galleria ---------- */
+.gal{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,1.6vw,24px);grid-auto-flow:dense}
+.gal figure{margin:0;overflow:hidden;border-radius:6px;position:relative}
+.gal img{width:100%;height:115%;object-fit:cover}
+.gal figcaption{margin-top:10px;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2)}
+.gal figure:nth-child(1){grid-column:span 7;aspect-ratio:4/3}
+.gal figure:nth-child(2){grid-column:span 5;aspect-ratio:3/4;margin-top:12vh}
+.gal figure:nth-child(3){grid-column:span 4;aspect-ratio:4/5}
+.gal figure:nth-child(4){grid-column:span 4;aspect-ratio:1;margin-top:8vh}
+.gal figure:nth-child(5){grid-column:span 4;aspect-ratio:4/5}
+.gal figure:nth-child(6){grid-column:span 5;aspect-ratio:1;margin-top:10vh}
+.gal figure:nth-child(7){grid-column:span 7;aspect-ratio:16/10}
+.gal .img{overflow:hidden;height:100%;border-radius:6px}
+
+/* ---------- Menu ---------- */
+.menu-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:calc(var(--gutter)*1.5)}
+.menu-side{position:sticky;top:10vh;align-self:start}
+.menu-side .card{aspect-ratio:9/14;max-height:60vh;width:auto;overflow:hidden;border-radius:6px;margin-top:28px}
+.menu-side .card img{width:100%;height:115%;object-fit:cover}
+.menu-side p{color:var(--fg-2);max-width:26rem}
+.course{padding:8px 0 40px}
+.course h3{font-size:clamp(1.6rem,2.6vw,2.4rem);display:flex;align-items:baseline;gap:16px;margin-bottom:18px}
+.course h3 span{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2);font-style:normal}
+.dish{display:grid;grid-template-columns:1fr auto;gap:8px 20px;padding:16px 0;border-top:1px solid var(--line);align-items:baseline}
+.dish:last-child{border-bottom:1px solid var(--line)}
+.dish b{font-weight:500;font-size:1.05rem}
+.dish small{grid-column:1;display:block;color:var(--fg-2);font-size:.92rem}
+.dish .p{font-family:var(--mono);font-size:.85rem;color:var(--accent);white-space:nowrap}
+.menu-note{margin-top:28px;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-2);display:flex;gap:24px;flex-wrap:wrap}
+
+/* ---------- Prenota ---------- */
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--gutter)*1.5)}
+.res-intro p{color:var(--fg-2);max-width:30rem}
+.res-intro .alt{margin-top:32px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:26px 22px}
+.field{display:flex;flex-direction:column;gap:8px;position:relative}
+.field.full{grid-column:1/-1}
+.field label{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2)}
+.field input,.field select,.field textarea{background:transparent;border:0;border-bottom:1px solid var(--line-strong);color:var(--fg);font:inherit;padding:10px 0;border-radius:0;transition:border-color .4s;-webkit-appearance:none;appearance:none}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23999' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 2px center;padding-right:24px}
+.field select option{color:#000}
+.field textarea{resize:vertical;min-height:70px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.field.err label{color:var(--accent)}
+.field.err input,.field.err select{border-color:var(--accent)}
+.field .msg{display:none;font-size:.8rem;color:var(--accent)}
+.field.err .msg{display:block}
+.form-foot{grid-column:1/-1;display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:8px}
+.form-foot small{color:var(--fg-2);font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+.form-ok{grid-column:1/-1;display:none;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.form.sent .form-ok{display:block}
+.form-ok h3{font-size:1.6rem;margin-bottom:10px}
+.hp{position:absolute;left:-9999px;opacity:0}
+
+/* ---------- Dove ---------- */
+.info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gutter);border-top:1px solid var(--line);padding-top:30px}
+.info h4{margin:0 0 10px;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2);font-weight:400}
+.info p{margin:0;font-size:1.05rem}
+.info a:hover{color:var(--accent)}
+.dove-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:56px}
+
+/* ---------- Footer ---------- */
+footer{padding:80px var(--gutter) 30px;border-top:1px solid var(--line)}
+.wordmark{font-family:var(--display);font-size:clamp(5rem,22vw,22rem);line-height:.82;letter-spacing:-.05em;font-variation-settings:'opsz' 144,'SOFT' 0;overflow:hidden;white-space:nowrap}
+.wordmark em{font-weight:300;color:var(--accent)}
+.foot-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:40px;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-2)}
+.foot-row nav{display:flex;gap:20px;flex-wrap:wrap}
+.foot-row a:hover{color:var(--accent)}
+
+/* ---------- Motion helpers ---------- */
+html.has-motion [data-reveal],html.has-motion [data-reveal-group]>*,html.has-motion .w-mask .w{visibility:hidden}
+.w-mask{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.w{display:inline-block;will-change:transform}
+[data-clip]{will-change:clip-path}
+.cursor{position:fixed;left:0;top:0;z-index:99;pointer-events:none;width:10px;height:10px;border-radius:50%;background:#fff;mix-blend-mode:difference;transform:translate(-50%,-50%);display:none;opacity:0;transition:opacity .4s}
+.cursor.on{opacity:1}
+.cursor span{position:absolute;left:18px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;opacity:0;transition:opacity .3s}
+.cursor.label span{opacity:1}
+.cursor.label{width:14px;height:14px}
+@media (hover:hover) and (pointer:fine){html.has-motion .cursor{display:block}}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1000px){
+  .nav-links{display:none}
+  .nav-cta .pill{display:none}
+  .burger{display:block}
+  .hero{grid-template-columns:1fr;align-items:start;padding-top:110px}
+  .hero-media{aspect-ratio:4/3;max-height:50vh;max-width:none}
+  .hero canvas{height:40%}
+  .sec-head,.cucina-grid,.menu-grid,.res-grid{grid-template-columns:1fr}
+  .cucina-media{position:static;aspect-ratio:4/3;max-height:none}
+  .menu-side{position:static}
+  .menu-side .card{max-height:none;aspect-ratio:4/5}
+  .story-stage{grid-template-columns:1fr;align-content:center;gap:24px}
+  .story-time{font-size:clamp(4rem,22vw,8rem)}
+  .story-lines{min-height:16rem}
+  .gal figure{grid-column:span 12 !important;margin-top:0 !important;aspect-ratio:4/3 !important}
+  .form{grid-template-columns:1fr}
+  .info-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .hero h1 br,#prenota h2 br{display:none}
+  .info-grid{grid-template-columns:1fr}
+  .hero-foot{flex-direction:column;gap:8px}
+  .eyebrow{flex-wrap:wrap}
+}
+@media (prefers-reduced-motion:reduce){
+  .btn::before,.btn svg,.nav-links a::after{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Vai al contenuto</a>
+<div class="cursor" aria-hidden="true"><span></span></div>
+
+<header class="nav">
+  <a class="brand" href="#top" aria-label="Bar Ristorante Gabri — inizio pagina">Gabri</a>
+  <nav class="nav-links" aria-label="Sezioni">
+    <a href="#giornata">La giornata</a>
+    <a href="#cucina">La cucina</a>
+    <a href="#galleria">Galleria</a>
+    <a href="#menu">Menu</a>
+    <a href="#dove">Dove siamo</a>
+  </nav>
+  <div class="nav-cta">
+    <a href="tel:+393282464286">328 24 64 286</a>
+    <a class="pill" href="#prenota" data-magnetic>Prenota</a>
+    <button class="burger" aria-label="Apri il menu di navigazione" aria-expanded="false" aria-controls="overlay"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="overlay" id="overlay">
+  <a href="#giornata">La giornata</a>
+  <a href="#cucina">La cucina</a>
+  <a href="#galleria">Galleria</a>
+  <a href="#menu">Menu</a>
+  <a href="#prenota">Prenota</a>
+  <a href="#dove">Dove siamo</a>
+  <div class="meta">Via Como 10 · Cavi di Lavagna<br>Tutti i giorni 6:30 – 02:00 · <a href="tel:+393282464286" style="font:inherit;display:inline;opacity:1">328 24 64 286</a></div>
+</div>
+
+<main id="main">
+<section class="hero" id="top" data-theme="light">
+  <canvas id="sea" aria-hidden="true"></canvas>
+  <div class="hero-copy">
+    <p class="eyebrow" data-intro>Cavi di Lavagna · Riviera Ligure · dalle 6:30 alle 2:00</p>
+    <h1 data-split data-intro>Il mare, <br><em>a tavola.</em></h1>
+    <p class="lead" data-intro>Bar, ristorante e gelateria in Via Como. Colazione al banco, tavola calda a pranzo, aperitivo sul dehors e cena di pesce ligure: una sola porta, tutto il giorno.</p>
+    <div class="hero-cta" data-intro>
+      <a class="btn solid" href="#prenota" data-magnetic data-cursor="Cena">Prenota la cena <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 3l5 5-5 5"/></svg></a>
+      <a class="btn" href="tel:+393282464286" data-magnetic>Chiama ora</a>
+    </div>
+  </div>
+  <figure class="hero-media" data-clip data-intro>
+    <img src="https://ristorantebargabri.it/images/terrace.jpeg" alt="Il dehors del Bar Ristorante Gabri al tramonto, con i tavoli apparecchiati lungo la strada" data-parallax fetchpriority="high">
+    <figcaption>Il dehors, ora blu</figcaption>
+  </figure>
+  <div class="hero-foot" data-intro>
+    <span>Via Como 10 · 16033 Cavi di Lavagna (GE)</span>
+    <span>Tutti i giorni · 6:30 – 02:00</span>
+    <span>Cena su prenotazione · dalle 19:00</span>
+  </div>
+</section>
+
+<section class="story" id="giornata" data-theme="light" aria-label="La giornata al Gabri">
+  <div class="story-stage">
+    <div class="story-time" aria-hidden="true"><span id="story-h">06</span><em id="story-m">:30</em></div>
+    <div class="story-lines">
+      <div class="story-line" data-time="06" data-min=":30">
+        <h3>Si apre <em>col caffè.</em></h3>
+        <p>Colazione al banco, prima che il paese si svegli del tutto. Il bar è la porta di casa: si entra per un espresso e si esce sapendo com'è il mare oggi.</p>
+      </div>
+      <div class="story-line" data-time="12" data-min=":30">
+        <h3>A pranzo, <em>tavola calda.</em></h3>
+        <p>Piatti di casa, pronti in fretta e senza fronzoli, per chi lavora in zona e per chi ha appena chiuso l'ombrellone.</p>
+      </div>
+      <div class="story-line" data-time="18" data-min=":30">
+        <h3>L'aperitivo <em>guarda il mare.</em></h3>
+        <p>Un calice sul dehors mentre la strada cambia luce. Per chi torna dalla spiaggia, un gelato artigianale al banco.</p>
+      </div>
+      <div class="story-line" data-time="20" data-min=":00">
+        <h3>La sera, <em>si cena di pesce.</em></h3>
+        <p>Pescato del giorno, trofie al pesto, muscoli alla marinara. La cucina di mare ligure, dalle 19 e su prenotazione.</p>
+      </div>
+    </div>
+    <div class="story-ui" aria-hidden="true"><span>La giornata</span><div class="story-bar"><i id="story-prog"></i></div><span id="story-count">01 / 04</span></div>
+  </div>
+</section>
+
+<section class="sec" id="cucina" data-theme="light">
+  <div class="sec-head">
+    <span class="mono" data-reveal>La cucina</span>
+    <div><h2 data-split>Una tavola ligure, <em>con l'anima di mare.</em></h2></div>
+  </div>
+  <div class="cucina-grid">
+    <figure class="cucina-media" data-clip>
+      <img src="https://ristorantebargabri.it/images/interior.jpeg" alt="La sala interna del Bar Ristorante Gabri con i tavoli apparecchiati" data-parallax loading="lazy">
+    </figure>
+    <div class="cucina-list" data-reveal-group>
+      <div class="cucina-item">
+        <span class="n">I.</span>
+        <div><h3>Il mare a due passi</h3><p>A Cavi di Lavagna il pesce arriva fresco ogni giorno. Lo scegliamo con cura e lo portiamo in tavola come vuole la tradizione ligure: semplice, onesto, di stagione.</p></div>
+      </div>
+      <div class="cucina-item">
+        <span class="n">II.</span>
+        <div><h3>La cucina di casa</h3><p>Trofie al pesto genovese, muscoli alla marinara, spaghetti alla spezzina. Piatti che raccontano la riviera, preparati come si fanno in famiglia.</p></div>
+      </div>
+      <div class="cucina-item">
+        <span class="n">III.</span>
+        <div><h3>Dal mattino a notte fonda</h3><p>Bar, ristorante e gelateria nello stesso posto: colazioni al banco, aperitivi sul dehors, gelati artigianali e cene di pesce. Dalle 6:30 alle 2:00, ogni giorno.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="galleria" data-theme="light">
+  <div class="sec-head">
+    <span class="mono" data-reveal>Galleria</span>
+    <div><h2 data-split>Il dehors, la sala, <em>i piatti del giorno.</em></h2></div>
+  </div>
+  <div class="gal">
+    <figure><div class="img" data-clip><img src="https://ristorantebargabri.it/images/table.jpeg" alt="Tavolo sul dehors con linguine ai frutti di mare e un bicchiere di vino bianco" data-parallax loading="lazy"></div><figcaption>Linguine ai frutti di mare, sul dehors</figcaption></figure>
+    <figure><div class="img" data-clip><img src="https://ristorantebargabri.it/images/dish.jpeg" alt="Trofie al pesto con fagiolini e patate" data-parallax loading="lazy"></div><figcaption>Trofie al pesto genovese</figcaption></figure>
+    <figure><div class="img" data-clip><img src="https://ristorantebargabri.it/images/cozze.jpeg" alt="Muscoli alla marinara con crostini di pane" data-parallax loading="lazy"></div><figcaption>Muscoli alla marinara</figcaption></figure>
+    <figure><div class="img" data-clip><img src="https://ristorantebargabri.it/images/calamari.jpeg" alt="Calamari alla griglia con prezzemolo e limone" data-parallax loading="lazy"></div><figcaption>Calamari grigliati</figcaption></figure>
+    <figure><div class="img" data-clip><img src="https://ristorantebargabri.it/images/exterior.jpeg" alt="L'insegna Bar Gabri Tavola Calda in Via Como a Cavi di Lavagna" data-parallax loading="lazy"></div><figcaption>Via Como 10</figcaption></figure>
+    <figure><div class="img" data-clip><img src="https://ristorantebargabri.it/images/interior.jpeg" alt="La sala interna del ristorante" data-parallax loading="lazy"></div><figcaption>La sala</figcaption></figure>
+    <figure><div class="img" data-clip><img src="https://ristorantebargabri.it/images/terrace.jpeg" alt="Il dehors la sera, con i fiori e i tavoli apparecchiati" data-parallax loading="lazy"></div><figcaption>Il dehors, la sera</figcaption></figure>
+  </div>
+</section>
+
+<section class="sec" id="menu" data-theme="dark">
+  <div class="sec-head">
+    <span class="mono" data-reveal>Alle 19 si cena</span>
+    <div><h2 data-split>Il menu <em>di mare.</em></h2><p data-reveal>Le proposte cambiano con la freschezza del giorno: quello che vedi qui è il menu della cena. Pane, coperto e servizio € 2,50.</p></div>
+  </div>
+  <div class="menu-grid">
+    <aside class="menu-side">
+      <p data-reveal>I dolci variano di giorno in giorno — chiedere al cameriere. Per allergie e intolleranze, parlane con noi al momento della prenotazione.</p>
+      <figure class="card" data-clip><img src="https://ristorantebargabri.it/images/menu-card.jpeg" alt="Il menu cartaceo del Bar Ristorante Gabri" data-parallax loading="lazy"></figure>
+    </aside>
+    <div class="menu-list">
+      <div class="course" data-reveal-group>
+        <h3>Antipasti <span>01</span></h3>
+        <div class="dish"><b>Filetto di sgombro marinato a caldo</b><span class="p">€ 14</span><small>con panzanella mediterranea</small></div>
+        <div class="dish"><b>Muscoli alla marinara</b><span class="p">€ 12</span><small>cozze in guazzetto profumato</small></div>
+        <div class="dish"><b>Battuta di Fassona</b><span class="p">€ 16</span><small>olio verde, petali di cipolla rossa caramellata e crostino mediterraneo</small></div>
+      </div>
+      <div class="course" data-reveal-group>
+        <h3>Primi piatti <span>02</span></h3>
+        <div class="dish"><b>Spaghetti alla spezzina</b><span class="p">€ 15</span><small>ragù verde di cozze e vongole</small></div>
+        <div class="dish"><b>Trofie al pesto genovese</b><span class="p">€ 14</span><small>con patate e fagiolini</small></div>
+        <div class="dish"><b>Calamarata</b><span class="p">€ 16</span><small>calamari e pomodorini ciliegini</small></div>
+      </div>
+      <div class="course" data-reveal-group>
+        <h3>Secondi piatti <span>03</span></h3>
+        <div class="dish"><b>Calamari grigliati</b><span class="p">€ 18</span><small>e verdure in scapece</small></div>
+        <div class="dish"><b>Costata di manzo (ca. 500 g)</b><span class="p">€ 30</span><small>alla griglia con verdure grigliate</small></div>
+        <div class="dish"><b>Coniglio alla ligure</b><span class="p">€ 16</span><small>pinoli, olive taggiasche e patate schiacciate</small></div>
+        <div class="dish"><b>Pescato del giorno alla ligure</b><span class="p">€ 22</span><small>selezione fresca di giornata</small></div>
+      </div>
+      <div class="course" data-reveal-group>
+        <h3>Dessert <span>04</span></h3>
+        <div class="dish"><b>Dolci del giorno</b><span class="p">€ 8</span><small>variano di giorno in giorno — chiedere al cameriere</small></div>
+      </div>
+      <div class="menu-note" data-reveal><span>Pane, coperto e servizio € 2,50</span><span>Prezzi in euro, IVA inclusa</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="prenota" data-theme="dark">
+  <div class="sec-head">
+    <span class="mono" data-reveal>Prenotazioni</span>
+    <div><h2 data-split>Prenota il tuo tavolo <br><em>sul mare.</em></h2></div>
+  </div>
+  <div class="res-grid">
+    <div class="res-intro">
+      <p data-reveal>Al momento la prenotazione online è disponibile solo per la <strong>cena, dalle 19:00</strong>. Compila il modulo: si apre WhatsApp con la richiesta già scritta e ti confermiamo direttamente noi. A pranzo e per il bar non serve prenotare.</p>
+      <div class="alt" data-reveal-group>
+        <a class="link" href="tel:+393282464286">Chiama il 328 24 64 286</a>
+        <a class="link" href="https://wa.me/393282464286?text=Ciao%20Bar%20Ristorante%20Gabri!%20Vorrei%20informazioni%20per%20una%20prenotazione." target="_blank" rel="noopener">Scrivici su WhatsApp</a>
+      </div>
+    </div>
+    <form class="form" id="resform" action="https://wa.me/393282464286" method="get" novalidate data-reveal-group>
+      <div class="field"><label for="f-name">Nome e cognome</label><input id="f-name" name="nome" type="text" autocomplete="name" required><span class="msg">Inserisci il nome</span></div>
+      <div class="field"><label for="f-tel">Telefono</label><input id="f-tel" name="telefono" type="tel" autocomplete="tel" required><span class="msg">Inserisci un numero di telefono</span></div>
+      <div class="field"><label for="f-date">Data</label><input id="f-date" name="data" type="date" required><span class="msg">Scegli una data</span></div>
+      <div class="field"><label for="f-time">Orario</label>
+        <select id="f-time" name="orario" required>
+          <option value="">Seleziona</option>
+          <option>19:00</option><option>19:15</option><option>19:30</option><option>19:45</option>
+          <option>20:00</option><option>20:15</option><option>20:30</option><option>20:45</option>
+          <option>21:00</option><option>21:15</option><option>21:30</option><option>21:45</option>
+          <option>22:00</option><option>22:15</option><option>22:30</option><option>22:45</option>
+          <option>23:00</option><option>23:15</option><option>23:30</option><option>23:45</option>
+        </select><span class="msg">Scegli un orario</span></div>
+      <div class="field"><label for="f-pax">Numero di persone</label>
+        <select id="f-pax" name="persone" required>
+          <option value="">Seleziona</option>
+          <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>15+</option>
+        </select><span class="msg">Indica quante persone</span></div>
+      <div class="field"><label for="f-note">Note (facoltative)</label><input id="f-note" name="note" type="text" placeholder="Allergie, passeggino, tavolo fuori…"></div>
+      <div class="hp" aria-hidden="true"><label>Non compilare<input name="_honey" tabindex="-1" autocomplete="off"></label></div>
+      <div class="form-foot">
+        <button class="btn solid" type="submit" data-magnetic>Invia su WhatsApp <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 3l5 5-5 5"/></svg></button>
+        <small>Nessun account · conferma diretta dal ristorante</small>
+      </div>
+      <div class="form-ok" role="status"><h3>Richiesta pronta.</h3><p>Si è aperto WhatsApp con il messaggio già scritto: premi invio e ti rispondiamo appena possibile. Se non si è aperto, <a class="link" id="wa-fallback" href="https://wa.me/393282464286" target="_blank" rel="noopener">apri WhatsApp da qui</a>.</p></div>
+    </form>
+  </div>
+</section>
+
+<section class="sec" id="dove" data-theme="dark">
+  <div class="sec-head">
+    <span class="mono" data-reveal>Dove siamo</span>
+    <div><h2 data-split>Ti aspettiamo <em>a Cavi di Lavagna.</em></h2></div>
+  </div>
+  <div class="info-grid" data-reveal-group>
+    <div class="info"><h4>Indirizzo</h4><p>Via Como 10<br>16033 Cavi di Lavagna (GE)</p></div>
+    <div class="info"><h4>Orari</h4><p>Tutti i giorni<br>6:30 – 02:00</p></div>
+    <div class="info"><h4>Telefono</h4><p><a href="tel:+393282464286">328 24 64 286</a></p></div>
+    <div class="info"><h4>Scrivici</h4><p><a href="mailto:Archettivaleria07@gmail.com">Archettivaleria07@gmail.com</a><br><a href="https://www.instagram.com/bar.gabri08" target="_blank" rel="noopener">@bar.gabri08</a></p></div>
+  </div>
+  <div class="dove-cta" data-reveal-group>
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Bar%20Gabri%20Via%20Como%2010%20Cavi%20di%20Lavagna" target="_blank" rel="noopener" data-magnetic>Apri la mappa <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 3l5 5-5 5"/></svg></a>
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Bar%20Gabri%20Via%20Como%2010%20Cavi%20di%20Lavagna" target="_blank" rel="noopener" data-magnetic>Le recensioni su Google</a>
+  </div>
+</section>
+</main>
+
+<footer data-theme="dark">
+  <div class="wordmark" aria-label="Bar Ristorante Gabri">Bar <em>Gabri</em></div>
+  <div class="foot-row">
+    <span>© <span id="year">2026</span> Bar Ristorante Gabri · P. IVA IT01226470993 · Lavagna (GE)</span>
+    <nav aria-label="Note legali">
+      <a href="mailto:Archettivaleria07@gmail.com">E-mail</a>
+      <a href="privacy.html">Privacy e cookie</a>
+      <a href="#top" id="totop">Torna su ↑</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script>
+(function(){
+  'use strict';
+  const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+  const html=document.documentElement;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine=window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  $('#year').textContent=new Date().getFullYear();
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.defaults({ease:'power3.out',duration:.85});
+  ScrollTrigger.config({ignoreMobileResize:true});
+
+  /* ---------- Theme per section ---------- */
+  const themeMeta=$('meta[name="theme-color"]');
+  function setTheme(t){
+    html.classList.toggle('theme-dark',t==='dark');
+    themeMeta.setAttribute('content',t==='dark'?'#0E1A27':'#F4EEE3');
+  }
+  $$('[data-theme]').forEach(el=>{
+    const t=el.dataset.theme;
+    ScrollTrigger.create({trigger:el,start:'top 55%',end:'bottom 55%',onEnter:()=>setTheme(t),onEnterBack:()=>setTheme(t)});
+  });
+
+  /* ---------- Sea canvas (hero) ---------- */
+  const canvas=$('#sea');
+  const ctx=canvas.getContext('2d');
+  const hero=$('.hero');
+  let W=0,H=0,dpr=1,raf=null,t0=performance.now(),running=false,inView=true;
+  const ptr={x:-1,y:-1,tx:-1,ty:-1};
+  const LINES=26;
+  function size(){
+    dpr=Math.min(window.devicePixelRatio||1,1.5);
+    W=canvas.clientWidth;H=canvas.clientHeight;
+    canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function stroke(){
+    const cs=getComputedStyle(document.body);
+    return cs.color;
+  }
+  function draw(now){
+    const t=(now-t0)/1000;
+    ctx.clearRect(0,0,W,H);
+    ctx.lineWidth=1;
+    const col=stroke();
+    if(ptr.tx>=0){ptr.x+= (ptr.tx-ptr.x)*.08; ptr.y+=(ptr.ty-ptr.y)*.08;}
+    for(let i=0;i<LINES;i++){
+      const f=i/(LINES-1);
+      const base=H*0.12+f*H*0.88;
+      const amp=4+f*14;
+      ctx.beginPath();
+      ctx.globalAlpha=0.05+f*0.22;
+      ctx.strokeStyle=col;
+      for(let x=0;x<=W;x+=6){
+        let y=base
+          +Math.sin(x*0.010+t*0.7+i*0.35)*amp
+          +Math.sin(x*0.023-t*0.45+i*0.9)*amp*0.45
+          +Math.sin(x*0.004+t*0.25)*amp*0.8;
+        if(ptr.x>=0){
+          const dx=x-ptr.x, dy=base-ptr.y;
+          const d=Math.sqrt(dx*dx+dy*dy);
+          const r=180;
+          if(d<r){const k=(1-d/r); y-=k*k*22;}
+        }
+        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    }
+    ctx.globalAlpha=1;
+  }
+  function loop(now){draw(now); raf=requestAnimationFrame(loop);}
+  function start(){ if(!running&&!reduce&&inView&&!document.hidden){running=true; raf=requestAnimationFrame(loop);} }
+  function stop(){ if(running){cancelAnimationFrame(raf); running=false;} }
+  size(); draw(t0);
+  window.addEventListener('resize',()=>{size(); if(reduce) draw(performance.now());});
+  document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
+  new IntersectionObserver(e=>{inView=e[0].isIntersecting; inView?start():stop();}).observe(hero);
+  if(fine){
+    hero.addEventListener('pointermove',e=>{const r=canvas.getBoundingClientRect(); ptr.tx=e.clientX-r.left; ptr.ty=e.clientY-r.top;});
+    hero.addEventListener('pointerleave',()=>{ptr.tx=-1;ptr.ty=-1;ptr.x=-1;ptr.y=-1;});
+  }
+
+  /* ---------- Burger ---------- */
+  const burger=$('.burger'), overlay=$('#overlay');
+  let lenis=null;
+  function closeMenu(){document.body.classList.remove('menu-open'); burger.setAttribute('aria-expanded','false'); if(lenis) lenis.start();}
+  burger.addEventListener('click',()=>{
+    const open=!document.body.classList.contains('menu-open');
+    document.body.classList.toggle('menu-open',open);
+    burger.setAttribute('aria-expanded',String(open));
+    if(lenis) open?lenis.stop():lenis.start();
+  });
+  $$('a',overlay).forEach(a=>a.addEventListener('click',closeMenu));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape') closeMenu();});
+
+  /* ---------- Reservation → WhatsApp ---------- */
+  const form=$('#resform');
+  const dateIn=$('#f-date');
+  const today=new Date(); const pad=n=>String(n).padStart(2,'0');
+  dateIn.min=`${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    if(form.querySelector('[name="_honey"]').value) return;
+    let ok=true;
+    $$('.field',form).forEach(f=>{
+      const c=f.querySelector('input,select'); if(!c||!c.required) return;
+      const bad=!c.value.trim(); f.classList.toggle('err',bad); if(bad) ok=false;
+    });
+    if(!ok){ const first=form.querySelector('.field.err input,.field.err select'); first&&first.focus(); return; }
+    const v=n=>form.elements[n].value.trim();
+    const [y,m,d]=v('data').split('-');
+    const msg=`Ciao Bar Ristorante Gabri! Vorrei prenotare un tavolo per la cena.\n`+
+      `Nome: ${v('nome')}\nTelefono: ${v('telefono')}\nData: ${d}/${m}/${y}\nOrario: ${v('orario')}\nPersone: ${v('persone')}`+
+      (v('note')?`\nNote: ${v('note')}`:'')+`\nGrazie!`;
+    const url='https://wa.me/393282464286?text='+encodeURIComponent(msg);
+    $('#wa-fallback').href=url;
+    form.classList.add('sent');
+    const btn=form.querySelector('button[type=submit]'); btn.disabled=true; btn.firstChild.textContent='Richiesta pronta ';
+    window.open(url,'_blank','noopener');
+  });
+  $$('.field input,.field select',form).forEach(c=>c.addEventListener('input',()=>c.closest('.field').classList.remove('err')));
+
+  /* ---------- Anchors ---------- */
+  function scrollTo(hash){
+    const el=document.querySelector(hash); if(!el) return;
+    if(lenis) lenis.scrollTo(el,{offset:0,duration:1.4});
+    else el.scrollIntoView({behavior:reduce?'auto':'smooth'});
+  }
+  $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+    const h=a.getAttribute('href'); if(h.length<2) return;
+    e.preventDefault(); scrollTo(h); history.replaceState(null,'',h);
+  }));
+
+  /* ======================== Motion (skipped under reduced motion) ======================== */
+  if(reduce){ html.classList.add('no-motion'); ScrollTrigger.refresh(); return; }
+  html.classList.add('has-motion');
+  gsap.set('[data-intro]:not(h1)',{autoAlpha:0});
+
+  /* ---------- Lenis ---------- */
+  lenis=new Lenis({lerp:.085,smoothWheel:true,wheelMultiplier:.9});
+  lenis.on('scroll',ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+
+  /* ---------- Word split ---------- */
+  function split(el){
+    el.setAttribute('aria-label',el.textContent.replace(/\s+/g,' ').trim());
+    const walk=node=>{
+      [...node.childNodes].forEach(ch=>{
+        if(ch.nodeType===3){
+          const frag=document.createDocumentFragment();
+          ch.textContent.split(/(\s+)/).forEach(tok=>{
+            if(!tok) return;
+            if(/^\s+$/.test(tok)){frag.appendChild(document.createTextNode(' ')); return;}
+            const m=document.createElement('span'); m.className='w-mask'; m.setAttribute('aria-hidden','true');
+            const w=document.createElement('span'); w.className='w'; w.textContent=tok; m.appendChild(w); frag.appendChild(m);
+          });
+          node.replaceChild(frag,ch);
+        } else if(ch.nodeType===1 && ch.tagName!=='A'){ walk(ch); }
+      });
+    };
+    walk(el);
+    return $$('.w',el);
+  }
+  $$('[data-split]').forEach(h=>{
+    const words=split(h);
+    if(h.hasAttribute('data-intro')) return;
+    gsap.fromTo(words,{yPercent:110,autoAlpha:0},{yPercent:0,autoAlpha:1,duration:1,ease:'power4.out',stagger:.06,
+      scrollTrigger:{trigger:h,start:'top 85%',once:true}});
+  });
+
+  /* ---------- Hero intro ---------- */
+  const heroWords=$$('.hero h1 .w');
+  const heroImg=$('.hero-media img');
+  gsap.set('.hero-media',{clipPath:'inset(0 0 100% 0)'});
+  gsap.set(heroImg,{scale:1.08});
+  const intro=gsap.timeline({defaults:{ease:'power4.out'},delay:.15});
+  intro.fromTo(canvas,{autoAlpha:0},{autoAlpha:1,duration:1.6,ease:'power2.out'},0)
+    .fromTo('.nav',{y:-14,autoAlpha:0},{y:0,autoAlpha:1,duration:1},.2)
+    .to('.eyebrow',{autoAlpha:1,duration:.8},.45)
+    .fromTo(heroWords,{yPercent:110,autoAlpha:0},{yPercent:0,autoAlpha:1,duration:1.1,stagger:.06},.55)
+    .to('.lead',{autoAlpha:1,y:0,duration:.9},1.05)
+    .to('.hero-cta',{autoAlpha:1,duration:.9},1.2)
+    .to('.hero-media',{autoAlpha:1,clipPath:'inset(0 0 0% 0)',duration:1.3},.8)
+    .to(heroImg,{scale:1,duration:1.6},.8)
+    .to('.hero-foot',{autoAlpha:1,duration:.9},1.45);
+
+  /* ---------- Reveals ---------- */
+  $$('[data-reveal]').forEach(el=>gsap.fromTo(el,{y:30,autoAlpha:0},{y:0,autoAlpha:1,duration:.95,ease:'power4.out',scrollTrigger:{trigger:el,start:'top 85%',once:true}}));
+  $$('[data-reveal-group]').forEach(g=>{
+    const items=[...g.children];
+    gsap.fromTo(items,{y:30,autoAlpha:0},{y:0,autoAlpha:1,duration:.95,ease:'power4.out',stagger:.085,scrollTrigger:{trigger:g,start:'top 85%',once:true}});
+  });
+
+  /* ---------- Media: clip + parallax ---------- */
+  $$('[data-clip]:not([data-intro])').forEach(fig=>{
+    const img=fig.querySelector('img');
+    const tl=gsap.timeline({scrollTrigger:{trigger:fig,start:'top 85%',once:true}});
+    tl.fromTo(fig,{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0 0 0% 0)',duration:1.1,ease:'power4.out'})
+      .fromTo(img,{scale:1.08},{scale:1,duration:1.3,ease:'power4.out'},0);
+  });
+  $$('[data-parallax]').forEach(img=>{
+    const box=img.parentElement;
+    gsap.fromTo(img,{yPercent:-13},{yPercent:0,ease:'none',scrollTrigger:{trigger:box,start:'top bottom',end:'bottom top',scrub:1.1,invalidateOnRefresh:true}});
+  });
+
+  /* ---------- Story scene ---------- */
+  const lines=$$('.story-line'), hEl=$('#story-h'), mEl=$('#story-m'), prog=$('#story-prog'), count=$('#story-count');
+  gsap.set(lines,{autoAlpha:0,y:24,filter:'blur(6px)'});
+  const stl=gsap.timeline({scrollTrigger:{trigger:'.story',start:'top top',end:'bottom bottom',scrub:.9,
+    onUpdate:s=>{
+      const i=Math.min(lines.length-1,Math.floor(s.progress*lines.length));
+      if(hEl.textContent!==lines[i].dataset.time){hEl.textContent=lines[i].dataset.time; mEl.textContent=lines[i].dataset.min; count.textContent=`0${i+1} / 0${lines.length}`;}
+      prog.style.transform=`scaleX(${s.progress})`;
+    }}});
+  lines.forEach((l,i)=>{
+    stl.to(l,{autoAlpha:1,y:0,filter:'blur(0px)',duration:.4,ease:'power2.out'},i);
+    if(i<lines.length-1) stl.to(l,{autoAlpha:0,y:-24,filter:'blur(6px)',duration:.3,ease:'power2.in'},i+.72);
+  });
+
+  /* ---------- Magnetic + cursor ---------- */
+  if(fine){
+    $$('[data-magnetic]').forEach(el=>{
+      const xTo=gsap.quickTo(el,'x',{duration:.45,ease:'power3.out'}), yTo=gsap.quickTo(el,'y',{duration:.45,ease:'power3.out'});
+      el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(); xTo((e.clientX-(r.left+r.width/2))*.22); yTo((e.clientY-(r.top+r.height/2))*.22);});
+      el.addEventListener('pointerleave',()=>{xTo(0);yTo(0);});
+    });
+    const cur=$('.cursor'), lab=$('.cursor span');
+    const cx=gsap.quickTo(cur,'x',{duration:.35,ease:'power3.out'}), cy=gsap.quickTo(cur,'y',{duration:.35,ease:'power3.out'});
+    window.addEventListener('pointermove',e=>{cx(e.clientX);cy(e.clientY);cur.classList.add('on');},{passive:true});
+    document.addEventListener('mouseleave',()=>cur.classList.remove('on'));
+    $$('[data-cursor]').forEach(el=>{
+      el.addEventListener('pointerenter',()=>{lab.textContent=el.dataset.cursor; cur.classList.add('label');});
+      el.addEventListener('pointerleave',()=>cur.classList.remove('label'));
+    });
+  }
+
+  window.addEventListener('load',()=>ScrollTrigger.refresh());
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
